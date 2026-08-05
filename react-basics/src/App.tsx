@@ -1,12 +1,11 @@
-import { Counter } from './demos/Counter'
+import { PrettierFormat } from "./demos/PrettierFormat";
 
 function App() {
   return (
     <main className="app-shell">
-      <h1>Primul ecran interactiv</h1>
-      <Counter />
+      <PrettierFormat />
     </main>
-  )
+  );
 }
 
-export default App
+export default App;

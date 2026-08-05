@@ -35,10 +35,12 @@ Do not mix these language responsibilities unless explicitly requested.
 
 - The Vite + React + TypeScript scaffold has been initialized in `react-basics/` using the documented command sequence.
 - Keep future changes aligned with the step-based teaching structure already defined in the source layout conventions.
+- The first interactive lesson is implemented as `react-basics/src/demos/Counter.tsx` and is rendered from the small shell in `react-basics/src/App.tsx`.
 
 ## Agent behavior
 
 - Follow existing repository conventions before introducing new structure.
+- Please keep the stylyng low and imporve it only if requested
 - Make focused edits only; avoid unrelated refactors.
 - Preserve language boundaries.
 - If creating automation scripts, document:
@@ -82,6 +84,7 @@ Do not mix these language responsibilities unless explicitly requested.
 
 ## Sync scripts
 
+- The process to keep the shared English instructions aligned is: edit `CLAUDE.md` first, then run `scripts/sync-instructions.sh` to regenerate `.github/copilot-instructions.md`.
 - If the repository adds shell scripts that synchronize documentation, keep them explicit and easy to run locally.
 - Each sync script should document its purpose, inputs, outputs, and expected execution environment.
 - The canonical English instructions are `CLAUDE.md` and `.github/copilot-instructions.md`; keep them aligned whenever guidance changes.
