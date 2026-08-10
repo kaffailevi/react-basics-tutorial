@@ -1,0 +1,7 @@
+{
+  "style": "new-york",
+  "baseColor": "neutral",
+  "css": "variables",
+  "icons": "lucide",
+  "components": ["button"]
+}

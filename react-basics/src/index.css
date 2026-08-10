@@ -2,6 +2,67 @@
   box-sizing: border-box;
 }
 
+@import "tailwindcss";
+
+:root {
+  /* Theme tokens in OKLCH for perceptual color scaling */
+  --bg: oklch(98% 0.02 260);
+  --card: oklch(96% 0.03 260);
+  --foreground: oklch(7% 0.02 260);
+  --muted-foreground: oklch(35% 0.03 260);
+  --primary: oklch(58% 0.12 260);
+  --primary-foreground: oklch(98% 0.02 260);
+  --radius-md: 12px;
+  --space-sm: 8px;
+  --space-md: 16px;
+}
+
+.dark {
+  --bg: oklch(12% 0.02 260);
+  --card: oklch(16% 0.03 260);
+  --foreground: oklch(95% 0.02 260);
+  --muted-foreground: oklch(70% 0.03 260);
+  --primary: oklch(48% 0.12 260);
+  --primary-foreground: oklch(98% 0.02 260);
+}
+
+/* Expose small set of utility classes that map to tokens so we can write markup-style utilities
+   without a tailwind.config.js. These complement Tailwind utilities. */
+.bg-card {
+  background-color: var(--card);
+}
+
+.bg-app {
+  background-color: var(--bg);
+}
+
+.text-foreground {
+  color: var(--foreground);
+}
+
+.text-muted-foreground {
+  color: var(--muted-foreground);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.text-primary-foreground {
+  color: var(--primary-foreground);
+}
+
+.rounded-md {
+  border-radius: var(--radius-md);
+}
+
+.p-md {
+  padding: var(--space-md);
+}
+
+.p-sm {
+  padding: var(--space-sm);
+}
 :root {
   font-family:
     ui-sans-serif,

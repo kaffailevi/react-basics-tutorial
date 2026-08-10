@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { Counter } from "./demos/Counter";
-import { CounterClass } from "./demos/CounterClass";
-import { LiftingState } from "./demos/LiftingState";
-import { Timer } from "./demos/Timer";
-import { PureFunctions } from "./demos/PureFunctions";
-import { PrettierFormat } from "./demos/PrettierFormat";
-import { DemoMenu } from "./demos/DemoMenu";
+import { Button } from "@/components/ui/button";
+import { Counter } from "@/demos/Counter";
+import { CounterClass } from "@/demos/CounterClass";
+import { LiftingState } from "@/demos/LiftingState";
+import { Timer } from "@/demos/Timer";
+import { PureFunctions } from "@/demos/PureFunctions";
+import { PrettierFormat } from "@/demos/PrettierFormat";
+import { DemoMenu } from "@/demos/DemoMenu";
+import { PathAlias } from "@/demos/PathAlias";
+import { TailwindSetup } from "@/demos/TailwindSetup";
+import { ShadcnSetup } from "@/demos/ShadcnSetup";
 
 type Demo = {
   id: string;
@@ -16,34 +20,21 @@ type Demo = {
 
 function DemoTab({ demo, isActive, onClick }: { demo: Demo; isActive: boolean; onClick: () => void }) {
   return (
-    <button
-      type="button"
+    <Button
       onClick={onClick}
       aria-pressed={isActive}
-      style={{ position: "relative", padding: "0.6rem 1rem", marginRight: "0.5rem" }}
-      className={isActive ? "demo-tab demo-tab--active" : "demo-tab"}
+      variant={isActive ? "default" : "secondary"}
+      size="sm"
+      className="relative overflow-visible mr-2"
     >
       {demo.title}
       <span
         aria-hidden
-        style={{
-          position: "absolute",
-          right: -6,
-          top: -6,
-          width: 26,
-          height: 26,
-          borderRadius: 13,
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "#222",
-          color: "#fff",
-          fontSize: "0.75rem",
-        }}
+        className={"absolute -right-2 -top-2 inline-flex items-center justify-center w-6 h-6 rounded-full text-xs bg-black text-white"}
       >
         {demo.step}
       </span>
-    </button>
+    </Button>
   );
 }
 
@@ -55,6 +46,9 @@ export default function App() {
     { id: "pure", step: 4, title: "Pure functions", element: <PureFunctions /> },
     { id: "lifting", step: 6, title: "Lifting state", element: <LiftingState /> },
     { id: "prettier", step: 5, title: "Prettier", element: <PrettierFormat /> },
+    { id: "path-alias", step: 8, title: "Path alias", element: <PathAlias /> },
+    { id: "tailwind", step: 9, title: "Tailwind setup", element: <TailwindSetup /> },
+    { id: "shadcn", step: 10, title: "shadcn/ui (Button)", element: <ShadcnSetup /> },
     { id: "menu-demo", step: 7, title: "Demo menu", element: <DemoMenu /> },
   ];
 

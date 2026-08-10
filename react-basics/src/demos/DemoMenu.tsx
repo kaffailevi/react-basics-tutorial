@@ -2,6 +2,7 @@
 // Exemplu mic: tiparul meniului de sus în miniatură. Arată LOCAL vs GLOBAL selection (fără router).
 // Sursa unică de adevăr a navigării e ID-ul activ; restul UI-ului se DERIVĂ din el.
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 type Mini = { id: string; step: number; title: string; content: string };
 
@@ -21,12 +22,10 @@ export function LocalMiniDemo() {
       <h3>Local: useState (se pierde la refresh)</h3>
       <div style={{ display: "flex", gap: "0.5rem", marginBottom: "0.75rem" }}>
         {miniDemos.map(d => (
-          <button key={d.id} onClick={() => setActiveId(d.id)} style={{ position: "relative", padding: "0.4rem 0.8rem" }}>
+            <Button key={d.id} onClick={() => setActiveId(d.id)} className="relative" variant="secondary" size="sm">
             {d.title}
-            <span style={{ position: "absolute", right: -8, top: -8, width: 20, height: 20, borderRadius: 10, background: "#333", color: "#fff", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: "0.7rem" }}>
-              {d.step}
-            </span>
-          </button>
+                <span className="absolute -right-2 -top-2 inline-flex items-center justify-center w-5 h-5 rounded-full text-xs bg-black text-white">{d.step}</span>
+            </Button>
         ))}
       </div>
 
@@ -90,12 +89,10 @@ function GlobalMiniDemoControls() {
   return (
     <div style={{ display: "flex", gap: "0.5rem", marginBottom: "0.75rem" }}>
       {miniDemos.map(d => (
-        <button key={d.id} onClick={() => setActiveId(d.id)} aria-pressed={d.id === activeId} style={{ position: "relative", padding: "0.4rem 0.8rem" }}>
+          <Button key={d.id} onClick={() => setActiveId(d.id)} aria-pressed={d.id === activeId} className="relative" variant={d.id === activeId ? "default" : "secondary"} size="sm">
           {d.title}
-          <span style={{ position: "absolute", right: -8, top: -8, width: 20, height: 20, borderRadius: 10, background: "#0a58ca", color: "#fff", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: "0.7rem" }}>
-            {d.step}
-          </span>
-        </button>
+              <span className={d.id === activeId ? "absolute -right-2 -top-2 inline-flex items-center justify-center w-5 h-5 rounded-full text-xs bg-black text-white" : "absolute -right-2 -top-2 inline-flex items-center justify-center w-5 h-5 rounded-full text-xs bg-blue-600 text-white"}>{d.step}</span>
+          </Button>
       ))}
     </div>
   );

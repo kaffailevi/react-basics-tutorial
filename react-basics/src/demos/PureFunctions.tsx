@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 const RATE_INITIAL = 5;
 const RATE_STEP = 0.05;
@@ -61,12 +62,10 @@ export function PureFunctions() {
             {ron} RON
           </p>
           <div className="fx-actions">
-            <button type="button" onClick={decreaseRon}>
-              -10
-            </button>
-            <button type="button" onClick={increaseRon}>
+            <Button onClick={decreaseRon}>-10</Button>
+            <Button variant="secondary" onClick={increaseRon}>
               +10
-            </button>
+            </Button>
           </div>
         </article>
 
@@ -76,12 +75,10 @@ export function PureFunctions() {
             1 EUR = {rate.toFixed(2)} RON
           </p>
           <div className="fx-actions">
-            <button type="button" onClick={decreaseRate}>
-              -{RATE_STEP.toFixed(2)}
-            </button>
-            <button type="button" onClick={increaseRate}>
+            <Button onClick={decreaseRate}>-{RATE_STEP.toFixed(2)}</Button>
+            <Button variant="secondary" onClick={increaseRate}>
               +{RATE_STEP.toFixed(2)}
-            </button>
+            </Button>
           </div>
         </article>
       </div>

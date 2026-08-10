@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export function Counter() {
   const [count, setCount] = useState(0);
@@ -11,15 +12,13 @@ export function Counter() {
         {count}
       </p>
       <div className="counter-actions">
-        <button type="button" onClick={() => setCount(c => c + 1)}>
-          Crește cu 1
-        </button>
-        <button type="button" onClick={() => setCount(c => c - 1)}>
+        <Button onClick={() => setCount(c => c + 1)}>Crește cu 1</Button>
+        <Button variant="secondary" onClick={() => setCount(c => c - 1)}>
           Scade cu 1
-        </button>
-        <button type="button" onClick={() => setCount(() => 0)}>
+        </Button>
+        <Button variant="outline" onClick={() => setCount(() => 0)}>
           Resetează la zero
-        </button>
+        </Button>
       </div>
     </section>
   );

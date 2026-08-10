@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 let subscriptionCount = 0;
 
@@ -76,14 +77,12 @@ export function Timer() {
       </p>
 
       <div className="demo-actions">
-        <button type="button" onClick={() => setRunning(true)}>
-          Pornește
-        </button>
-        <button type="button" onClick={() => setRunning(false)}>
+              <Button onClick={() => setRunning(true)}>Pornește</Button>
+              <Button variant="secondary" onClick={() => setRunning(false)}>
           Pauză
-        </button>
-        <button
-          type="button"
+              </Button>
+              <Button
+                  variant="outline"
           onClick={() => {
             console.log("[timer] reset clicked");
             setRunning(false);
@@ -91,7 +90,7 @@ export function Timer() {
           }}
         >
           Reset
-        </button>
+              </Button>
       </div>
 
       <p className="demo-copy">

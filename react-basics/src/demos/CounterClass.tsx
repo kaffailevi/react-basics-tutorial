@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Button } from "@/components/ui/button";
 
 type CounterClassState = {
   count: number;
@@ -34,15 +35,13 @@ export class CounterClass extends Component<{}, CounterClassState> {
           {count}
         </p>
         <div className="counter-actions">
-          <button type="button" onClick={this.increment}>
-            Crește cu 1
-          </button>
-          <button type="button" onClick={this.decrement}>
+          <Button onClick={this.increment}>Crește cu 1</Button>
+          <Button variant="secondary" onClick={this.decrement}>
             Scade cu 1
-          </button>
-          <button type="button" onClick={this.reset}>
+          </Button>
+          <Button variant="outline" onClick={this.reset}>
             Resetează la zero
-          </button>
+          </Button>
         </div>
       </section>
     );
