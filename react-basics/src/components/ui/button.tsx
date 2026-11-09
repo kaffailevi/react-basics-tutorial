@@ -4,14 +4,16 @@ import { cn } from "@/lib/utils";
 type Variant = "default" | "secondary" | "outline" | "ghost" | "link";
 type Size = "sm" | "md" | "lg" | "icon";
 
-const base = "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2";
+const base =
+  "inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
+// Pas 13: variantele folosesc doar tokenii temei, deci arată corect și în dark mode.
 const variantClasses: Record<Variant, string> = {
-  default: "bg-primary text-primary-foreground hover:opacity-95",
-  secondary: "bg-card text-foreground border border-transparent hover:bg-opacity-95",
-  outline: "border border-gray-200 bg-transparent hover:bg-gray-50",
-  ghost: "bg-transparent hover:bg-gray-100",
-  link: "bg-transparent underline-offset-4 hover:underline text-primary",
+  default: "bg-primary text-primary-foreground hover:bg-primary/85",
+  secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/70",
+  outline: "border border-border bg-card text-foreground hover:bg-muted",
+  ghost: "bg-transparent text-foreground hover:bg-muted",
+  link: "bg-transparent text-primary underline-offset-4 hover:underline",
 };
 
 const sizeClasses: Record<Size, string> = {
@@ -32,7 +34,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
   return (
     <button
       ref={ref}
-      className={cn(base, variantClasses[variant], sizeClasses[size], disabled && "opacity-50 cursor-not-allowed", className)}
+      className={cn(
+        base,
+        variantClasses[variant],
+        sizeClasses[size],
+        disabled && "cursor-not-allowed opacity-50",
+        className,
+      )}
       disabled={disabled}
       {...rest}
     />

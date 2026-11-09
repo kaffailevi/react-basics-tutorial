@@ -13,15 +13,16 @@ type PriceCardProps = {
 // în părinte. Asta evită să avem două copii care se pot desincroniza.
 function PriceCard({ label, amount, currency, step = 1, onChange }: PriceCardProps) {
   return (
-    <label style={{ display: "flex", flexDirection: "column", gap: "0.35rem" }}>
-      <span>{label}</span>
+    <label className="demo-panel">
+      <span className="font-medium">{label}</span>
       <input
+        className="demo-input"
         type="number"
         value={amount}
         step={step}
         onChange={event => onChange(Number(event.target.value))}
       />
-      <span>{currency}</span>
+      <span className="text-sm text-muted-foreground">{currency}</span>
     </label>
   );
 }
@@ -35,11 +36,11 @@ export function LiftingState() {
     <section className="demo-card" aria-label="Lifting state demo">
       <h2>O singură sursă de adevăr</h2>
       <p className="demo-copy">
-        Dacă modifici una dintre valorile de mai jos, cealaltă se actualizează automat. Nu există două stări
-        separate care să se poată „bate cap în cap".
+        Dacă modifici una dintre valorile de mai jos, cealaltă se actualizează automat. Nu există două stări separate
+        care să se poată „bate cap în cap".
       </p>
 
-      <div style={{ display: "grid", gap: "1rem" }}>
+      <div className="grid gap-4 md:grid-cols-2">
         <PriceCard label="În RON" amount={amount} currency="RON" onChange={setAmount} />
         <PriceCard
           label="În puncte"

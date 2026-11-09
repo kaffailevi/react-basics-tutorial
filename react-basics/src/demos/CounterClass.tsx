@@ -5,11 +5,12 @@ type CounterClassState = {
   count: number;
 };
 
-// Pas 3 — counter cu clasă.
+// Pas 2 — counter cu clasă.
 // Aici se vede mai explicit ciclul: schimb stare -> React cheamă din nou render() -> UI-ul se actualizează.
 // Pentru cine vine din OOP/Java, legătura dintre stare și randare e mai ușor de urmărit decât la hooks.
 // Totuși, în cod nou preferăm funcții + hooks: sunt mai scurte, mai clare și sunt stilul recomandat azi.
-export class CounterClass extends Component<{}, CounterClassState> {
+// Componenta nu primește props: Record<string, never> spune exact asta (spre deosebire de `{}`, care acceptă orice).
+export class CounterClass extends Component<Record<string, never>, CounterClassState> {
   state: CounterClassState = {
     count: 0,
   };
@@ -30,7 +31,7 @@ export class CounterClass extends Component<{}, CounterClassState> {
     const { count } = this.state;
 
     return (
-      <section className="counter-demo" aria-label="Counter demo">
+      <section className="demo-card counter-demo" aria-label="Counter class demo">
         <p className="counter-value" aria-live="polite">
           {count}
         </p>

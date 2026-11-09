@@ -1,57 +1,56 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { ActiveStepProvider, useActiveStep, type StepInfo } from "@/context/ActiveStepContext";
+import { cn } from "@/lib/utils";
 import { Counter } from "@/demos/Counter";
 import { CounterClass } from "@/demos/CounterClass";
-import { LiftingState } from "@/demos/LiftingState";
-import { Timer } from "@/demos/Timer";
 import { PureFunctions } from "@/demos/PureFunctions";
 import { PrettierFormat } from "@/demos/PrettierFormat";
+import { Timer } from "@/demos/Timer";
+import { LiftingState } from "@/demos/LiftingState";
 import { DemoMenu } from "@/demos/DemoMenu";
 import { PathAlias } from "@/demos/PathAlias";
 import { TailwindSetup } from "@/demos/TailwindSetup";
 import { ShadcnSetup } from "@/demos/ShadcnSetup";
 import { CustomHook } from "@/demos/CustomHook";
 import { ContextDemo } from "@/demos/ContextDemo";
+import { Finishing } from "@/demos/Finishing";
 
 type Demo = StepInfo & {
   element: React.ReactNode;
 };
 
-// Registrul pașilor: singurul loc în care se adaugă o lecție nouă.
+// Registrul pașilor: singurul loc în care se adaugă o lecție nouă, în ordinea în care au fost construite.
 const demos: Demo[] = [
-  { id: "counter", step: 1, title: "Counter", element: <Counter /> },
-  { id: "counter-class", step: 3, title: "Counter (class)", element: <CounterClass /> },
-  { id: "timer", step: 5, title: "Timer", element: <Timer /> },
-  { id: "pure", step: 4, title: "Pure functions", element: <PureFunctions /> },
+  { id: "counter", step: 1, title: "useState (Counter)", element: <Counter /> },
+  { id: "counter-class", step: 2, title: "Counter (class)", element: <CounterClass /> },
+  { id: "pure", step: 3, title: "Pure functions", element: <PureFunctions /> },
+  { id: "prettier", step: 4, title: "Prettier", element: <PrettierFormat /> },
+  { id: "timer", step: 5, title: "useEffect (Timer)", element: <Timer /> },
   { id: "lifting", step: 6, title: "Lifting state", element: <LiftingState /> },
-  { id: "prettier", step: 5, title: "Prettier", element: <PrettierFormat /> },
+  { id: "menu-demo", step: 7, title: "Demo menu", element: <DemoMenu /> },
   { id: "path-alias", step: 8, title: "Path alias", element: <PathAlias /> },
   { id: "tailwind", step: 9, title: "Tailwind setup", element: <TailwindSetup /> },
   { id: "shadcn", step: 10, title: "shadcn/ui (Button)", element: <ShadcnSetup /> },
-  { id: "menu-demo", step: 7, title: "Demo menu", element: <DemoMenu /> },
   { id: "custom-hook", step: 11, title: "Custom hook", element: <CustomHook /> },
   { id: "context", step: 12, title: "Context API", element: <ContextDemo /> },
+  { id: "finishing", step: 13, title: "Finisaje", element: <Finishing /> },
 ];
 
 function DemoTab({ demo, isActive, onClick }: { demo: Demo; isActive: boolean; onClick: () => void }) {
   return (
-    <Button
-      onClick={onClick}
-      aria-pressed={isActive}
-      variant={isActive ? "default" : "secondary"}
-      size="sm"
-      className="relative overflow-visible mr-2"
-    >
-      {demo.title}
+    <Button onClick={onClick} aria-pressed={isActive} variant={isActive ? "default" : "outline"} size="sm">
       <span
         aria-hidden
-        className={
-          "absolute -right-2 -top-2 inline-flex items-center justify-center w-6 h-6 rounded-full text-xs bg-black text-white"
-        }
+        className={cn(
+          "inline-flex size-5 items-center justify-center rounded-full text-[11px] font-bold",
+          isActive ? "bg-primary-foreground text-primary" : "bg-muted text-muted-foreground",
+        )}
       >
         {demo.step}
       </span>
+      {demo.title}
     </Button>
   );
 }
@@ -63,17 +62,25 @@ function Shell() {
 
   return (
     <div className="app-shell">
-      <nav style={{ padding: "0.5rem", borderBottom: "1px solid #eee" }} aria-label="Demo navigation">
+      <header className="flex items-center justify-between gap-4">
+        <div>
+          <p className="m-0 text-xs font-bold tracking-[0.16em] text-primary uppercase">React Basics</p>
+          <p className="m-0 text-sm text-muted-foreground">Un concept pe pas — de la useState la context.</p>
+        </div>
+        <ThemeToggle />
+      </header>
+
+      <nav className="flex flex-wrap gap-2 border-b border-border pb-4" aria-label="Pașii lecției">
         {demos.map(d => (
           <DemoTab key={d.id} demo={d} isActive={d.id === active.id} onClick={() => setActiveId(d.id)} />
         ))}
       </nav>
 
-      <main style={{ padding: "1rem" }}>
-        <h1>
+      <main className="grid gap-4">
+        <h1 className="m-0">
           Pas {active.step} — {active.title}
         </h1>
-        <div>{active.element}</div>
+        {active.element}
       </main>
     </div>
   );

@@ -2,8 +2,8 @@
 // Demonstrează utility-first + tokeni temă vs stil inline hardcodate.
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 
+// Exemplul „înainte" rămâne intenționat cu stil inline: el este ce comparăm.
 function InlineCard() {
   const dark = typeof document !== "undefined" && document.documentElement.classList.contains("dark");
   const bg = dark ? "#171717" : "#fafafa";
@@ -20,10 +20,10 @@ function InlineCard() {
 
 function TokenCard() {
   return (
-    <div className="bg-card text-foreground p-md rounded-md" style={{ border: "1px solid rgba(0,0,0,0.04)" }}>
-      <h3 style={{ marginTop: 0 }}>Card (utilitare / tokeni)</h3>
-      <p>Aceasta folosește utilitare care citesc tokenii din `:root` / `.dark`.</p>
-      <Button className="bg-primary text-primary-foreground p-sm rounded-md">Acțiune</Button>
+    <div className="grid gap-3 rounded-md border border-border bg-card p-md text-foreground">
+      <h3 className="m-0">Card (utilitare / tokeni)</h3>
+      <p className="m-0">Aceasta folosește utilitare care citesc tokenii din `:root` / `.dark`.</p>
+      <Button className="justify-self-start">Acțiune</Button>
     </div>
   );
 }
@@ -35,31 +35,34 @@ export function TailwindSetup() {
     <section className="demo-card">
       <h2>Tailwind utility tokens — demo</h2>
 
-      <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
-        <Button variant={!useTailwind ? "default" : "secondary"} onClick={() => setUseTailwind(false)} aria-pressed={!useTailwind}>
+      <div className="flex flex-wrap gap-2">
+        <Button
+          variant={!useTailwind ? "default" : "outline"}
+          onClick={() => setUseTailwind(false)}
+          aria-pressed={!useTailwind}
+        >
           Stil inline hardcodate
         </Button>
-        <Button variant={useTailwind ? "default" : "secondary"} onClick={() => setUseTailwind(true)} aria-pressed={useTailwind}>
+        <Button
+          variant={useTailwind ? "default" : "outline"}
+          onClick={() => setUseTailwind(true)}
+          aria-pressed={useTailwind}
+        >
           Utilitare + tokeni
         </Button>
-        <div style={{ marginLeft: "auto" }}>
-          <ThemeToggle />
-        </div>
       </div>
 
-      <div style={{ display: "grid", gap: 12 }}>
-        <div>
-          <strong>Versiunea activă</strong>
-        </div>
+      <div className="grid gap-3">
+        <strong>Versiunea activă</strong>
 
-        <div>{useTailwind ? <TokenCard /> : <InlineCard />}</div>
+        {useTailwind ? <TokenCard /> : <InlineCard />}
 
-        <div>
-          <h3>Explicație</h3>
-          <p>
-            Versiunea cu <em>stil inline</em> folosește culori fixe; dacă comuți tema la `.dark` ea nu se adaptează —
-            rămâne albă sau neagră conform valorilor hardcodate. Varianta cu tokeni citește variabilele CSS definite în
-            `:root` / `.dark` și se schimbă automat când tema se schimbă.
+        <div className="grid gap-2">
+          <h3 className="m-0">Explicație</h3>
+          <p className="demo-copy">
+            Versiunea cu <em>stil inline</em> folosește culori fixe; dacă comuți tema (butonul din dreapta sus) ea nu se
+            adaptează — rămâne albă sau neagră conform valorilor hardcodate. Varianta cu tokeni citește variabilele CSS
+            definite în `:root` / `.dark` și se schimbă automat când tema se schimbă.
           </p>
         </div>
       </div>

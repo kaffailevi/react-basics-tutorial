@@ -6,7 +6,7 @@ const RATE_STEP = 0.05;
 const COMISION_PCT = 0.01;
 const COMISION_ID = "pure-comision";
 
-// Pas 4 — funcții pure.
+// Pas 3 — funcții pure.
 // O funcție care citește un const de modul cu o valoare primitivă rămâne pură: acel număr nu se schimbă niciodată.
 // Problema apare când citește ceva ce se poate schimba între randări, cum ar fi DOM-ul, props sau state-ul.
 // Pentru cine vine din Java: const config = { rate: 5 } nu îngheață obiectul; const blochează doar legătura, ca final.

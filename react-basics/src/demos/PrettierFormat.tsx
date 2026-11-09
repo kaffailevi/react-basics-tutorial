@@ -1,4 +1,4 @@
-// Pas 5 — formatarea cu Prettier.
+// Pas 4 — formatarea cu Prettier.
 // Pasul acesta există ca să fixeze forma codului din proiect, nu ca să adauge logică de UI.
 // Ideea este simplă: formatarea se aplică automat la salvare și se poate verifica și în terminal.
 
@@ -17,7 +17,7 @@ export function PrettierFormat() {
     <section className="lesson-text" aria-labelledby="prettier-format-title">
       <header className="lesson-text__header">
         <p className="lesson-kicker">Configurare de proiect</p>
-        <h1 id="prettier-format-title">Prettier formatează automat codul</h1>
+        <h2 id="prettier-format-title">Prettier formatează automat codul</h2>
         <p>
           Am setat un formatter unic pentru proiect, ca toată grupa să obțină aceeași formă a codului fără discuții de
           gust la code review.

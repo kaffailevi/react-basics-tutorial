@@ -23,7 +23,9 @@ export function Timer() {
 
     console.log("[timer] effect: starting interval");
     const id = window.setInterval(() => {
-      console.log("[timer] tick", seconds + 1);
+      // Nu logăm `seconds` aici: efectul a capturat valoarea de la pornire și ar afișa mereu același număr
+      // (closure „înghețat"). Forma funcțională a setter-ului primește întotdeauna valoarea curentă.
+      console.log("[timer] tick");
       setSeconds(currentSeconds => currentSeconds + 1);
     }, 1000);
 
@@ -77,12 +79,12 @@ export function Timer() {
       </p>
 
       <div className="demo-actions">
-              <Button onClick={() => setRunning(true)}>Pornește</Button>
-              <Button variant="secondary" onClick={() => setRunning(false)}>
+        <Button onClick={() => setRunning(true)}>Pornește</Button>
+        <Button variant="secondary" onClick={() => setRunning(false)}>
           Pauză
-              </Button>
-              <Button
-                  variant="outline"
+        </Button>
+        <Button
+          variant="outline"
           onClick={() => {
             console.log("[timer] reset clicked");
             setRunning(false);
@@ -90,7 +92,7 @@ export function Timer() {
           }}
         >
           Reset
-              </Button>
+        </Button>
       </div>
 
       <p className="demo-copy">

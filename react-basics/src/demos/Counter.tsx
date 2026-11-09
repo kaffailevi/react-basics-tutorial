@@ -1,3 +1,5 @@
+// Pas 1 — useState (Counter).
+// Primul pas arată cel mai mic exemplu de state: o valoare care se schimbă la click și se redesenează singură.
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -7,7 +9,7 @@ export function Counter() {
   // Componenta este o functie: React o reapeleaza dupa fiecare update de stare ca sa refaca UI-ul.
   // Folosim forma functionala a setter-ului ca fiecare click sa porneasca din valoarea reala, nu dintr-o captura veche.
   return (
-    <section className="counter-demo" aria-label="Counter demo">
+    <section className="demo-card counter-demo" aria-label="Counter demo">
       <p className="counter-value" aria-live="polite">
         {count}
       </p>
