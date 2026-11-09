@@ -10,6 +10,7 @@ import { DemoMenu } from "@/demos/DemoMenu";
 import { PathAlias } from "@/demos/PathAlias";
 import { TailwindSetup } from "@/demos/TailwindSetup";
 import { ShadcnSetup } from "@/demos/ShadcnSetup";
+import { CustomHook } from "@/demos/CustomHook";
 
 type Demo = {
   id: string;
@@ -50,6 +51,7 @@ export default function App() {
     { id: "tailwind", step: 9, title: "Tailwind setup", element: <TailwindSetup /> },
     { id: "shadcn", step: 10, title: "shadcn/ui (Button)", element: <ShadcnSetup /> },
     { id: "menu-demo", step: 7, title: "Demo menu", element: <DemoMenu /> },
+    { id: "custom-hook", step: 11, title: "Custom hook", element: <CustomHook /> },
   ];
 
   const [activeId, setActiveId] = useState<string>(demos[0].id);

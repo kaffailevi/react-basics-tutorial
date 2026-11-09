@@ -360,3 +360,29 @@ select {
   outline: 3px solid #2563eb;
   outline-offset: 2px;
 }
+
+/* Pas 11 — elemente comune pentru lecțiile noi: blocul „cod de reținut" și exercițiul de la final. */
+.border-border {
+  border-color: color-mix(in oklch, var(--foreground) 14%, transparent);
+}
+
+.demo-code {
+  margin: 0;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 12px;
+  background: #0f172a;
+  color: #e2e8f0;
+  font-family: "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.lesson-exercise {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  background: color-mix(in oklch, var(--primary) 10%, transparent);
+}
