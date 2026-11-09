@@ -35,7 +35,11 @@ Do not mix these language responsibilities unless explicitly requested.
 
 - The Vite + React + TypeScript scaffold has been initialized in `react-basics/` using the documented command sequence.
 - Keep future changes aligned with the step-based teaching structure already defined in the source layout conventions.
-- The first interactive lesson is implemented as `react-basics/src/demos/Counter.tsx` and is rendered from the small shell in `react-basics/src/App.tsx`.
+- Steps 1–13 are implemented as `react-basics/src/demos/*.tsx` and listed, in order, in the registry in `react-basics/src/App.tsx`: useState, class component, pure functions, Prettier, useEffect, lifting state, demo menu, path alias, Tailwind, shadcn/ui Button, custom hook (`useCounter`), Context API (`ActiveStepProvider`), and finishing touches (uniform UI).
+- The active step is global state: `react-basics/src/context/ActiveStepContext.tsx` provides it and persists it in `localStorage` under `activeStepId`. Components read it with `useActiveStep()`, never through props.
+- Styling rules (step 13): use `<Button>` from `src/components/ui/`, theme tokens registered with Tailwind `@theme inline` in `src/index.css` (`bg-card`, `text-foreground`, `border-border`, `bg-primary`, ...), and the shared lesson classes (`demo-card`, `demo-copy`, `demo-panel`, `demo-code`, `demo-input`). No `style={{}}` and no plain `<button>` except in intentional "before" examples.
+- New lessons end with `<LessonExercise>` from `src/components/LessonExercise.tsx`.
+- Deployment: `.github/workflows/deploy-pages.yml` builds `react-basics/` and publishes it to GitHub Pages on every push to `main`. The Vite `base` is `/react-basics-tutorial/` for build and preview; keep it in sync with the repository name.
 
 ## Agent behavior
 

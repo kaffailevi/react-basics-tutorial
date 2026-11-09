@@ -71,6 +71,43 @@ This repository is organized to support a step-based teaching flow:
 
 The main app is expected to keep a registry of lessons and the currently active lesson, while the lesson files themselves hold only their own content.
 
+## Lessons so far
+
+| Step | Lesson | File |
+| --- | --- | --- |
+| 1 | useState (Counter) | `src/demos/Counter.tsx` |
+| 2 | Class component | `src/demos/CounterClass.tsx` |
+| 3 | Pure functions | `src/demos/PureFunctions.tsx` |
+| 4 | Prettier | `src/demos/PrettierFormat.tsx` |
+| 5 | useEffect (Timer) | `src/demos/Timer.tsx` |
+| 6 | Lifting state | `src/demos/LiftingState.tsx` |
+| 7 | Demo menu (local vs global selection) | `src/demos/DemoMenu.tsx` |
+| 8 | Path alias `@/` | `src/demos/PathAlias.tsx` |
+| 9 | Tailwind setup and theme tokens | `src/demos/TailwindSetup.tsx` |
+| 10 | shadcn/ui Button | `src/demos/ShadcnSetup.tsx` |
+| 11 | Custom hook (`useCounter`) | `src/demos/CustomHook.tsx`, `src/hooks/useCounter.ts` |
+| 12 | Context API (`ActiveStepProvider`) | `src/demos/ContextDemo.tsx`, `src/context/` |
+| 13 | Finishing touches (uniform UI) | `src/demos/Finishing.tsx` |
+
+## Scripts
+
+Run these inside `react-basics/`:
+
+- `npm run dev` — dev server at `http://localhost:5173/`
+- `npm run build` — type-check and production build into `dist/`
+- `npm run preview` — serve the build at `http://localhost:4173/react-basics-tutorial/`, the same path GitHub Pages uses
+- `npm run lint`, `npm run format`, `npm run format:check`
+
+## Deployment (GitHub Pages)
+
+Every push to `main` runs `.github/workflows/deploy-pages.yml`: it installs, lints and builds `react-basics/`, then publishes `dist/` to `https://kaffailevi.github.io/react-basics-tutorial/`.
+
+One-time setup in the repository: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
+The built site needs a current browser (Chrome/Edge 111+, Safari 16.4+, Firefox 128+), because Tailwind CSS v4 and the theme colors use `oklch()` and `color-mix()`.
+
+If the repository is renamed, update `PAGES_BASE` in `react-basics/vite.config.ts`.
+
 ## Contributing
 
 1. Read `docs/requirements.md` first.

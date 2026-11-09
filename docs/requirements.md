@@ -65,7 +65,13 @@ Titlu: Aplicatie React pentru invatare incrementala
 - `CLAUDE.md` si `.github/copilot-instructions.md` trebuie sa fie consistente intre ele.
 - Daca se folosesc scripturi `sh` pentru sincronizarea instructiunilor, ele trebuie documentate clar: scop, input, output si cum se ruleaza.
 
-10. Criterii de acceptanta
+10. Pasii 11–13 si publicarea
+- Pas 11 — custom hook: logica repetata (numarare cu limite) se muta intr-un hook propriu `useCounter` in `src/hooks/`; fiecare apel are state separat.
+- Pas 12 — Context API: pasul activ din meniu devine stare globala (`ActiveStepProvider` in `src/context/`), citita fara props de orice componenta si salvata in localStorage, ca sa ramana selectat dupa refresh. Lectia contine un dropdown cu toti pasii, care face acelasi lucru ca meniul de sus.
+- Pas 13 — finisaje: toata aplicatia arata uniform; butoanele sunt componenta `Button`, culorile vin din tokenii temei (si in dark mode), spatierea foloseste clasele Tailwind, nu stiluri inline.
+- Aplicatia este publicata pe GitHub Pages la fiecare push pe `main`, prin GitHub Actions; nu se comite build-ul in repository.
+
+11. Criterii de acceptanta
 - Exista un README in engleza care explica setup-ul, rolul fisierelor si fluxul de invatare.
 - Exista instructiuni in engleza pentru contributori si automatizari.
 - Exista conventii explicite pentru organizarea codului pe pasi.
